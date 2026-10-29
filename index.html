@@ -247,7 +247,6 @@ body.client .proposal{display:block}
       <div class="pgrid">
         <div><span class="k">Ore</span><span class="v num"><span id="p-hours">0</span> <small id="p-gg"></small></span></div>
         <div id="p-cost-w"><span class="k">Valore</span><span class="v num" id="p-cost">-</span></div>
-        <div id="p-rec-w"><span class="k">Canone mensile</span><span class="v num" id="p-rec">-</span></div>
         <div><span class="k">Durata indicativa</span><span class="v num" id="p-weeks">-</span></div>
       </div>
     </div>
@@ -281,8 +280,6 @@ body.client .proposal{display:block}
       </div>
       <div class="sum-rows">
         <div><span class="k">Effort base</span><span class="v" id="s-base">0</span></div>
-        <div><span class="k">Margine applicato</span><span class="v" id="s-margin">0</span></div>
-        <div><span class="k">Canone ricorrente</span><span class="v" id="s-rec">0 h/mese</span></div>
         <div><span class="k">Durata indicativa</span><span class="v" id="s-weeks">-</span></div>
         <div><span class="k">Totale due ambiti</span><span class="v" id="s-both">0 h</span></div>
       </div>
@@ -1557,17 +1554,14 @@ function rowBase(it){
   return effort(it,s) * Number(s.units||0);
 }
 function totals(tab){
-  var t = {hours:0, base:0, rec:0, recBase:0, n:0, areas:{}};
+  var t = {hours:0, base:0, n:0, areas:{}};
   items(tab).forEach(function(it){
     var s = st(it.id);
     if(!s.on) return;
     var d = rowHours(it), b = rowBase(it);
     t.n++;
-    if(it.recurring){ t.rec += d; t.recBase += b; }
-    else{
-      t.hours += d; t.base += b;
-      t.areas[it.area] = (t.areas[it.area]||0) + d;
-    }
+    t.hours += d; t.base += b;
+    t.areas[it.area] = (t.areas[it.area]||0) + d;
   });
   return t;
 }
@@ -1673,8 +1667,6 @@ function renderSummary(){
   document.getElementById("s-hours").textContent = nd(t.hours);
   document.getElementById("s-gg").textContent = ggText(t.hours);
   document.getElementById("s-base").textContent = nd(t.base) + " h";
-  document.getElementById("s-margin").textContent = "+" + nd(t.hours - t.base) + " h";
-  document.getElementById("s-rec").textContent = t.rec ? nd(t.rec) + " h/mese" : "-";
   document.getElementById("s-both").textContent = nd(t.hours + o.hours) + " h " + ggText(t.hours + o.hours);
 
   var weeks = t.hours ? Math.ceil(t.hours / Math.max(1,S.res) / Math.max(1,S.hpw)) : 0;
@@ -1708,8 +1700,6 @@ function renderSummary(){
   document.getElementById("p-gg").textContent = ggText(t.hours);
   document.getElementById("p-cost").textContent = money(net);
   document.getElementById("p-cost-w").hidden = !(S.rate>0 && S.showCost);
-  document.getElementById("p-rec").textContent = t.rec ? nd(t.rec) + " h" : "-";
-  document.getElementById("p-rec-w").hidden = !t.rec;
   document.getElementById("p-weeks").textContent = wtxt;
   document.getElementById("brand-sub").textContent = scope;
 }
