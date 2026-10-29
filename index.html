@@ -225,8 +225,8 @@ body.client .proposal{display:block}
       <small id="brand-sub">Stima di implementazione</small>
     </div>
     <div class="tabs" role="tablist">
-      <button role="tab" id="tab-intelligence" aria-selected="true">Intelligence</button>
-      <button role="tab" id="tab-mce" aria-selected="false">Marketing Cloud Engagement</button>
+      <button role="tab" id="tab-mce" aria-selected="true">Marketing Cloud Engagement</button>
+      <button role="tab" id="tab-intelligence" aria-selected="false">Marketing Cloud Intelligence</button>
     </div>
     <div class="top-actions">
       <button class="tb" id="btn-mode">Vista cliente</button>
@@ -275,7 +275,7 @@ body.client .proposal{display:block}
   <aside class="aside">
     <div class="panel">
       <div class="sum-head">
-        <div class="sum-label" id="s-scope">Intelligence</div>
+        <div class="sum-label" id="s-scope">Marketing Cloud Engagement</div>
         <div class="big num"><span id="s-hours">0</span><span class="unit">ore</span><span class="unit" id="s-gg"></span></div>
         <div class="sum-cost num" id="s-cost" hidden></div>
       </div>
@@ -300,10 +300,10 @@ body.client .proposal{display:block}
       <label class="field"><span>Risorse in parallelo</span><input type="number" id="f-res" min="1" max="20" step="1"></label>
       <label class="field"><span>Ore / settimana</span><input type="number" id="f-hpw" min="1" max="168" step="1"></label>
       <label class="field"><span>Arrotonda ogni riga</span>
-        <select id="f-round"><option value="0">Nessuno</option><option value="1">All'ora</option><option value="8">Al giorno (8 h)</option></select>
+        <select id="f-round"><option value="0.5">Alla mezz'ora</option><option value="1">All'ora</option><option value="8">Al giorno (8 h)</option></select>
       </label>
       <label class="chk"><input type="checkbox" id="f-showcost"> Mostra valore al cliente</label>
-      <p class="hint">Margine e arrotondamento seguono la tab attiva, come nel foglio originale: Intelligence parte con +25% e righe arrotondate al giorno (8 h), Engagement con 0% e valori esatti. I valori sono in ore; i giorni, mostrati solo nei totali, sono arrotondati per eccesso. Il margine resta modificabile voce per voce con <em>Modifica effort</em>.</p>
+      <p class="hint">Margine e arrotondamento seguono la tab attiva, come nel foglio originale: Intelligence parte con +25% e righe arrotondate al giorno (8 h), Engagement con 0% e righe alla mezz'ora, che è l'arrotondamento minimo. I valori sono in ore; i giorni, mostrati solo nei totali, sono arrotondati per eccesso. Il margine resta modificabile voce per voce con <em>Modifica effort</em>.</p>
     </div>
   </aside>
 </main>
@@ -444,7 +444,7 @@ var CATALOG = {
    "area": "SEGMENTAZIONE (1 unità = 1 DE per Campagna)",
    "name": "Segmentazione base con DE Filtrate su Sync (statica)",
    "e": {
-    "Basso": 1.6,
+    "Basso": 1.5,
     "Medio": 4,
     "Alto": 8
    }
@@ -505,8 +505,8 @@ var CATALOG = {
    "name": "Import file - Caricamento automatico di file CSV/FTP in Data Extensions",
    "e": {
     "Basso": 1,
-    "Medio": 1.6,
-    "Alto": 3.2
+    "Medio": 1.5,
+    "Alto": 3
    },
    "sub": "Automazioni di gestione dati (Data Management)"
   },
@@ -516,8 +516,8 @@ var CATALOG = {
    "name": "Data Extract - Esportazione automatica dei dati (DE --> FTP)",
    "e": {
     "Basso": 1,
-    "Medio": 1.6,
-    "Alto": 3.2
+    "Medio": 1.5,
+    "Alto": 3
    },
    "sub": "Automazioni di gestione dati (Data Management)"
   },
@@ -527,8 +527,8 @@ var CATALOG = {
    "name": "File Transfer (FTP) - Spostamento automatico dei file da e verso FTP",
    "e": {
     "Basso": 1,
-    "Medio": 1.6,
-    "Alto": 3.2
+    "Medio": 1.5,
+    "Alto": 3
    },
    "sub": "Automazioni di gestione dati (Data Management)"
   },
@@ -549,8 +549,8 @@ var CATALOG = {
    "name": "Filter Activities - Creazione automatica di DE filtrate senza SQL",
    "e": {
     "Basso": 1,
-    "Medio": 1.6,
-    "Alto": 3.2
+    "Medio": 1.5,
+    "Alto": 3
    },
    "sub": "Automazioni di gestione dati (Data Management)"
   },
@@ -571,8 +571,8 @@ var CATALOG = {
    "name": "Synchronized Data Extensions – Sincronizzazione standard da Salesforce CRM a SFMC",
    "e": {
     "Basso": 1,
-    "Medio": 1.6,
-    "Alto": 3.2
+    "Medio": 1.5,
+    "Alto": 3
    },
    "sub": "Automazioni di sincronizzazione dati CRM → SFMC"
   },
@@ -615,8 +615,8 @@ var CATALOG = {
    "name": "Scheduled Sends (Email/SMS/Push) – Invio pianificato semplice (es. newsletter settimanale)",
    "e": {
     "Basso": 1,
-    "Medio": 1.6,
-    "Alto": 3.2
+    "Medio": 1.5,
+    "Alto": 3
    },
    "sub": "Automazioni di invio messaggi (Email, SMS, Push)"
   },
@@ -702,8 +702,8 @@ var CATALOG = {
    "area": "AUTOMATIONS",
    "name": "Error Handling e notifiche automatiche – Configurazione automatica notifiche email in caso di errori di automazioni",
    "e": {
-    "Basso": 2.4,
-    "Medio": 4.8,
+    "Basso": 2.5,
+    "Medio": 5,
     "Alto": 8
    },
    "sub": "Automazioni di manutenzione"
@@ -725,8 +725,8 @@ var CATALOG = {
    "name": "Einstein Send Time Optimization – Automazione per invio automatico email nel momento migliore",
    "e": {
     "Basso": 1,
-    "Medio": 1.6,
-    "Alto": 3.2
+    "Medio": 1.5,
+    "Alto": 3
    },
    "sub": "Automazioni Einstein (AI-driven) (se disponibili)"
   },
@@ -1505,13 +1505,14 @@ var CATALOG = {
 
 /* ======================= stato =========================== */
 var LEVELS = ["Basso","Medio","Alto"];
-var HPD = 8;   /* ore per giorno */
+var HPD = 8;          /* ore per giorno */
+var MIN_STEP = 0.5;   /* arrotondamento minimo di ogni riga: la mezz'ora */
 var S = {
-  tab:"intelligence", mode:"edit", client:"", q:"", onlySel:false, levers:false,
+  tab:"mce", mode:"edit", client:"", q:"", onlySel:false, levers:false,
   /* come nel foglio originale: margine e arrotondamento esistono solo su Intelligence */
-  /* round = passo di arrotondamento delle righe in ore: 0 nessuno, 1 ora, 8 giorno (Intelligence, come nel foglio) */
+  /* round = passo di arrotondamento delle righe in ore: 0,5 mezz'ora (minimo), 1 ora, 8 giorno (Intelligence, come nel foglio) */
   margin:{mce:0, intelligence:25}, rate:0, disc:0, cur:"EUR", res:1, hpw:40,
-  round:{mce:0, intelligence:8}, showCost:true,
+  round:{mce:0.5, intelligence:8}, showCost:true,
   sel:{}, custom:{mce:[],intelligence:[]}, closed:{}
 };
 
@@ -1537,15 +1538,18 @@ function effort(it,s){
   if(s.e && s.e[s.cx]!=null) return Number(s.e[s.cx]);
   return Number(it.e[s.cx]);
 }
-/* ore della riga: effort x unita' x (1 + margine), poi arrotondato al passo dell'ambito */
+/* passo di arrotondamento dell'ambito in ore: mai sotto la mezz'ora */
+function stepOf(sc){ return Math.max(MIN_STEP, Number(S.round[sc])||0); }
+/* ore della riga: effort x unita' x (1 + margine), poi arrotondato al passo dell'ambito (al piu' vicino) */
 function rowHours(it){
   var s = st(it.id);
   if(!s.on) return 0;
   var sc = scopeOf(it);
   var m = (s.m==null? S.margin[sc] : s.m);
   var h = effort(it,s) * Number(s.units||0) * (1 + m/100);
-  var step = Number(S.round[sc])||0;
-  return step > 0 ? Math.round(h/step + 1e-9) * step : Math.round(h*100)/100;
+  var step = stepOf(sc);
+  var r = Math.round(h/step + 1e-9) * step;
+  return (h > 0 && r === 0) ? step : r;   /* una voce selezionata non arriva mai a 0 ore */
 }
 function rowBase(it){
   var s = st(it.id);
@@ -1762,7 +1766,7 @@ function syncTabs(){
   document.getElementById("tab-mce").setAttribute("aria-selected", S.tab==="mce");
   /* margine e arrotondamento sono per ambito: il pannello segue la tab attiva */
   document.getElementById("f-margin").value = S.margin[S.tab];
-  document.getElementById("f-round").value = String(S.round[S.tab]);
+  document.getElementById("f-round").value = String(stepOf(S.tab));
   document.getElementById("lbl-margin").textContent = "Margine (" + (S.tab==="mce" ? "Engagement" : "Intelligence") + ")";
 }
 
@@ -1780,7 +1784,7 @@ bind("btn-clear","click",function(){
 });
 bind("f-margin","input",function(e){ S.margin[S.tab] = Math.max(0, Number(e.target.value)||0); render(); });
 bind("f-cur","change",function(e){ S.cur = e.target.value; renderSummary(); });
-bind("f-round","change",function(e){ S.round[S.tab] = Number(e.target.value)||0; render(); });
+bind("f-round","change",function(e){ S.round[S.tab] = Math.max(MIN_STEP, Number(e.target.value)||0); render(); });
 bind("f-showcost","change",function(e){ S.showCost = e.target.checked; renderSummary(); });
 
 bind("btn-mode","click",function(){
@@ -1836,6 +1840,8 @@ function restore(d){
       S[k].intelligence = conv(v);
     }
   });
+  /* nessun file puo' scendere sotto la mezz'ora (es. vecchio "nessun arrotondamento") */
+  S.round.mce = stepOf("mce"); S.round.intelligence = stepOf("intelligence");
   S.sel = d.sel||{}; S.custom = d.custom||{mce:[],intelligence:[]};
   if(!S.custom.mce) S.custom.mce=[];
   if(!S.custom.intelligence) S.custom.intelligence=[];
@@ -1858,7 +1864,7 @@ function syncFields(){
   document.getElementById("f-cur").value = S.cur;
   document.getElementById("f-res").value = S.res;
   document.getElementById("f-hpw").value = S.hpw;
-  document.getElementById("f-round").value = String(S.round[S.tab]);
+  document.getElementById("f-round").value = String(stepOf(S.tab));
   document.getElementById("f-showcost").checked = S.showCost;
 }
 function download(name, text, type){
@@ -1884,7 +1890,7 @@ bind("file-in","change",function(e){
 });
 bind("btn-csv","click",function(){
   var rows = [["Ambito","Area","Attività","Complessità","Unità","Effort unitario (ore)","Margine %","Ore","Ricorrente"]];
-  ["intelligence","mce"].forEach(function(tab){
+  ["mce","intelligence"].forEach(function(tab){
     items(tab).forEach(function(it){
       var s = st(it.id); if(!s.on) return;
       rows.push([tab==="mce"?"Marketing Cloud Engagement":"Marketing Cloud Intelligence",
