@@ -4,7 +4,7 @@ Strumento interattivo per stimare effort, durata e costi di progetti
 Salesforce Marketing Cloud, pensato per essere usato in tempo reale
 durante le call con il cliente.
 
-[**Provalo online:** https://vincenzoboellis.github.io/sfmc-estimator/](https://vincenzoboellis.github.io/estimator_MCE-MCI/)
+Provalo online: https://vincenzoboellis.github.io/estimator_MCE-MCI/
 
 ## Cosa fa
 
