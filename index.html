@@ -6,7 +6,7 @@
 <title>Estimator - Salesforce Marketing Cloud</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#12212E;
@@ -23,7 +23,6 @@
   --muted:#6B7C8C;
   --danger:#A4342B;
   --radius:6px;
-  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --sans:"IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 *{box-sizing:border-box}
@@ -39,7 +38,7 @@ body{
 button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.num{font-family:var(--sans);font-variant-numeric:tabular-nums}
 
 /* ---------- intestazione ---------- */
 .topbar{
@@ -101,7 +100,6 @@ button{cursor:pointer}
 .area-meta{font-size:12.5px;color:var(--muted)}
 .area-days{font-size:13.5px;font-weight:600;color:var(--accent-dark);min-width:128px;text-align:right;white-space:nowrap}
 .gg{font-weight:400;color:var(--muted)}
-#f-round{width:144px}
 .caret{color:var(--muted);transition:transform .15s ease;font-size:11px}
 .area.closed .caret{transform:rotate(-90deg)}
 .area.closed .rows{display:none}
@@ -148,17 +146,17 @@ body.client .sub-label[data-on="0"]{display:none}
 .aside .panel{flex:none;min-width:0}
 .sum-head{padding:16px 18px 12px;overflow:hidden}
 .sum-label{font-size:12.5px;color:var(--muted);margin-bottom:2px}
-.big{font-family:var(--mono);font-size:42px;font-weight:600;line-height:1.05;letter-spacing:-.02em;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px;row-gap:2px}
+.big{font-family:var(--sans);font-size:42px;font-weight:600;line-height:1.05;letter-spacing:-.02em;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px;row-gap:2px}
 .big.s2{font-size:34px}.big.s3{font-size:28px}.big.s4{font-size:22px}
 .big #s-hours{white-space:nowrap;overflow-wrap:normal}
 .big .unit{font-size:15px;font-family:var(--sans);color:var(--muted);font-weight:400;letter-spacing:0;white-space:nowrap}
-.sum-cost{font-family:var(--mono);font-size:23px;font-weight:600;color:var(--accent-dark);margin-top:12px;overflow-wrap:anywhere;line-height:1.2}
+.sum-cost{font-family:var(--sans);font-size:23px;font-weight:600;color:var(--accent-dark);margin-top:12px;overflow-wrap:anywhere;line-height:1.2}
 .sum-cost.s2{font-size:18px}
 .sum-cost small{font-family:var(--sans);font-size:12px;font-weight:400;color:var(--muted);white-space:nowrap}
 .sum-rows{border-top:1px solid var(--line-soft);padding:12px 18px;display:flex;flex-direction:column;gap:7px;font-size:13.5px}
 .sum-rows div{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .sum-rows .k{color:var(--ink-soft);white-space:nowrap;flex:none}
-.sum-rows .v{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;min-width:0;overflow-wrap:anywhere}
+.sum-rows .v{font-family:var(--sans);font-variant-numeric:tabular-nums;text-align:right;min-width:0;overflow-wrap:anywhere}
 .bars{padding:14px 18px;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:9px}
 .bars{gap:11px}
 .bar-row{font-size:12.5px;min-width:0}
@@ -174,6 +172,7 @@ body.client .sub-label[data-on="0"]{display:none}
 .field input,.field select{width:96px;padding:5px 8px;border:1px solid var(--line);border-radius:var(--radius);text-align:right;background:#fff}
 .field select{text-align:left}
 .hint{font-size:12px;color:var(--muted);line-height:1.35}
+.settings .hint{margin:0}
 
 /* ---------- modalita cliente ---------- */
 .proposal{display:none}
@@ -195,14 +194,17 @@ body.client .proposal{display:block}
 .pgrid div{display:flex;flex-direction:column}
 .pgrid div[hidden]{display:none}
 .pgrid .k{font-size:12.5px;color:var(--muted)}
-.pgrid .v{font-family:var(--mono);font-size:27px;font-weight:600;overflow-wrap:anywhere;max-width:100%}
+.pgrid .v{font-family:var(--sans);font-size:27px;font-weight:600;overflow-wrap:anywhere;max-width:100%}
 .pgrid .v small{font-family:var(--sans);font-size:15px;font-weight:400;color:var(--muted)}
 
 /* ---------- aggiunta voce ---------- */
-.adder{padding:14px 16px;display:flex;gap:9px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line-soft);background:#F9FAFB}
+.adder{padding:14px 16px;display:flex;flex-direction:column;gap:9px;border-top:1px solid var(--line-soft);background:#F9FAFB}
+.adder-line{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.adder-eff{display:flex;flex-wrap:nowrap;gap:9px;flex:0 1 auto;min-width:0}
+.adder-eff input{flex:1 1 0;min-width:84px;width:128px;max-width:150px}
 .adder input,.adder select{padding:7px 9px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
 .adder select{max-width:100%;min-width:0}
-.adder input[type=number]{width:128px;text-align:right}
+.adder input[type=number]{text-align:right}
 .adder .grow{flex:1;min-width:200px}
 .btn{background:var(--ink);color:#fff;border:0;padding:8px 14px;border-radius:var(--radius);font-size:13.5px;font-weight:500}
 .btn:hover{background:#1E3446}
@@ -290,13 +292,19 @@ body.client .proposal{display:block}
     <div id="list"></div>
 
     <div class="adder">
-      <input class="grow" id="add-name" placeholder="Nuova attività" maxlength="90">
-      <select id="add-area"></select>
-      <input type="number" id="add-b" placeholder="Basso (ore)" step="0.5" min="0" max="500">
-      <input type="number" id="add-m" placeholder="Medio (ore)" step="0.5" min="0" max="500">
-      <input type="number" id="add-a" placeholder="Alto (ore)" step="0.5" min="0" max="500">
-      <label class="chk" title="Spunta se l'attività si ripete più volte (es. più template, più CloudPage)"><input type="checkbox" id="add-q"> A quantità</label>
-      <button class="btn" id="btn-add">Aggiungi</button>
+      <div class="adder-line">
+        <input class="grow" id="add-name" placeholder="Nuova attività" maxlength="90" aria-label="Nome nuova attività">
+        <select id="add-area" aria-label="Categoria"></select>
+      </div>
+      <div class="adder-line">
+        <div class="adder-eff">
+          <input type="number" id="add-b" placeholder="Basso (ore)" aria-label="Effort Basso in ore" step="0.5" min="0" max="500">
+          <input type="number" id="add-m" placeholder="Medio (ore)" aria-label="Effort Medio in ore" step="0.5" min="0" max="500">
+          <input type="number" id="add-a" placeholder="Alto (ore)" aria-label="Effort Alto in ore" step="0.5" min="0" max="500">
+        </div>
+        <label class="chk" title="Spunta se l'attività si ripete più volte (es. più template, più CloudPage)"><input type="checkbox" id="add-q"> A quantità</label>
+        <button class="btn" id="btn-add">Aggiungi</button>
+      </div>
     </div>
   </section>
 
@@ -317,20 +325,13 @@ body.client .proposal{display:block}
 
     <div class="panel settings">
       <h3>Parametri</h3>
-      <label class="field"><span id="lbl-margin">Margine pain point</span><input type="number" id="f-margin" min="0" max="200" step="5"></label>
       <label class="field"><span>Tariffa oraria</span><input type="number" id="f-rate" min="0" max="9999" step="0.5"></label>
       <label class="field"><span>Sconto %</span><input type="number" id="f-disc" min="0" max="100" step="1"></label>
       <label class="field"><span>Valuta</span>
         <select id="f-cur"><option value="EUR">EUR</option><option value="USD">USD</option><option value="GBP">GBP</option><option value="CHF">CHF</option></select>
       </label>
-      <label class="field"><span>Risorse in parallelo</span><input type="number" id="f-res" min="1" max="20" step="1" data-int></label>
-      <label class="field"><span>Ore / settimana</span><input type="number" id="f-hpw" min="1" max="168" step="1" data-int></label>
-      <label class="field"><span>Arrotonda ogni riga</span>
-        <select id="f-round"><option value="0.5">Mezz'ora</option><option value="1">Ora</option><option value="8">Giorno (8 h)</option></select>
-      </label>
-      <label class="chk"><input type="checkbox" id="f-showcost"> Mostra valore al cliente</label>
-      <p class="hint">Margine e arrotondamento seguono la tab attiva, come nel foglio originale: Intelligence parte con +25% e righe arrotondate al giorno (8 h), Engagement con 0% e righe alla mezz'ora, che è l'arrotondamento minimo. I valori sono in ore; i giorni, mostrati solo nei totali, sono arrotondati per eccesso. Il margine resta modificabile voce per voce con <em>Modifica effort</em>.</p>
-      <p class="hint">Limiti: fino a 200 unità per voce (solo sulle attività a quantità), 500 ore per unità, margine massimo 200%, 50 attività personalizzate per ambito.</p>
+      <p class="hint">Intelligence: +25% e righe arrotondate al giorno. Engagement: 0% e righe alla mezz'ora. Durata calcolata con 1 risorsa a 40 ore a settimana. Il valore compare al cliente solo se la tariffa oraria è maggiore di zero.</p>
+      <p class="hint">Limiti: 200 unità per voce, 500 ore per unità, 50 attività personalizzate. Medio non può essere inferiore a Basso, né Alto a Medio.</p>
     </div>
   </aside>
 </main>
@@ -345,7 +346,7 @@ body.client .proposal{display:block}
    CATALOGO - modifica qui i valori di effort (ORE per unità, 1 giorno = 8 ore).
    Ogni voce: id, area, name, e:{Basso,Medio,Alto}, recurring (ore/mese).
    ======================================================================= */
-var CATALOG = {"mce": [{"id": "mc-discovery-e-raccolta-requisiti-4", "area": "DISCOVERY, ANALISI, PIANIFICAZIONE", "name": "Discovery e raccolta requisiti", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-assessment-infrastrutturale-as-is-5", "area": "DISCOVERY, ANALISI, PIANIFICAZIONE", "name": "Assessment infrastrutturale as-is", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-pianificazione-e-strategia-di-marketing-6", "area": "DISCOVERY, ANALISI, PIANIFICAZIONE", "name": "Pianificazione e strategia di marketing", "e": {"Basso": 16, "Medio": 32, "Alto": 48}}, {"id": "mc-progettazione-del-data-model-des-campi-relazioni-7", "area": "DISCOVERY, ANALISI, PIANIFICAZIONE", "name": "Progettazione del Data Model (DEs, campi, relazioni)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}}, {"id": "mc-account-information-9", "area": "SETUP", "name": "Account Information", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-creazione-utenze-ruoli-permessi-utenti-10", "area": "SETUP", "name": "Creazione utenze, ruoli, permessi utenti", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-configurazione-sap-e-certificati-ssl-delegated-d-11", "area": "SETUP", "name": "Configurazione SAP e Certificati SSL (Delegated Domain)", "e": {"Basso": 16, "Medio": 24, "Alto": 32}, "u": "dominio"}, {"id": "mc-configurazione-sap-e-certificati-ssl-self-hosted-12", "area": "SETUP", "name": "Configurazione SAP e Certificati SSL (Self Hosted Domain)", "e": {"Basso": 24, "Medio": 32, "Alto": 40}, "u": "dominio"}, {"id": "mc-configurazione-sender-profile-delivery-profile-e-13", "area": "SETUP", "name": "Configurazione Sender Profile, Delivery Profile e Send Classifications", "e": {"Basso": 8, "Medio": 12, "Alto": 16}}, {"id": "mc-configurazione-sftp-location-14", "area": "SETUP", "name": "Configurazione SFTP Location", "e": {"Basso": 4, "Medio": 8, "Alto": 16}}, {"id": "mc-integrazione-con-crm-installazione-e-configurazi-15", "area": "SETUP", "name": "Integrazione con CRM (installazione e configurazione connettore)", "e": {"Basso": 24, "Medio": 40, "Alto": 56}}, {"id": "mc-reply-mail-management-16", "area": "SETUP", "name": "Reply Mail Management", "e": {"Basso": 8, "Medio": 16, "Alto": 32}}, {"id": "mc-segmentazione-base-con-de-filtrate-su-sync-stati-18", "area": "SEGMENTAZIONE (1 unità = 1 DE per Campagna)", "name": "Segmentazione base con DE Filtrate su Sync (statica)", "e": {"Basso": 1.5, "Medio": 4, "Alto": 8}, "u": "DE di campagna"}, {"id": "mc-segmentazione-avanzata-con-automation-sql-dinami-19", "area": "SEGMENTAZIONE (1 unità = 1 DE per Campagna)", "name": "Segmentazione avanzata con Automation/SQL (dinamica)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "u": "DE di campagna"}, {"id": "mc-customer-journey-semplice-email-sms-decision-spl-21", "area": "CUSTOMER JOURNEYS", "name": "Customer Journey semplice (email/sms + decision split su journey data)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "journey"}, {"id": "mc-customer-journey-avanzato-logiche-complesse-cust-22", "area": "CUSTOMER JOURNEYS", "name": "Customer Journey avanzato (logiche complesse + customer data)", "e": {"Basso": 24, "Medio": 40, "Alto": 56}, "u": "journey"}, {"id": "mc-customer-journey-semplice-da-salesforce-data-eve-23", "area": "CUSTOMER JOURNEYS", "name": "Customer Journey semplice da Salesforce Data Event / Automation", "e": {"Basso": 8, "Medio": 20, "Alto": 32}, "u": "journey"}, {"id": "mc-customer-journey-avanzato-da-salesforce-data-eve-24", "area": "CUSTOMER JOURNEYS", "name": "Customer Journey avanzato da Salesforce Data Event / Automation", "e": {"Basso": 20, "Medio": 32, "Alto": 48}, "u": "journey"}, {"id": "mc-import-file-caricamento-automatico-di-file-csv-f-27", "area": "AUTOMATIONS", "name": "Import file - Caricamento automatico di file CSV/FTP in Data Extensions", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di gestione dati (Data Management)", "u": "import"}, {"id": "mc-data-extract-esportazione-automatica-dei-dati-de-28", "area": "AUTOMATIONS", "name": "Data Extract - Esportazione automatica dei dati (DE --> FTP)", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di gestione dati (Data Management)", "u": "extract"}, {"id": "mc-file-transfer-ftp-spostamento-automatico-dei-fil-29", "area": "AUTOMATIONS", "name": "File Transfer (FTP) - Spostamento automatico dei file da e verso FTP", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di gestione dati (Data Management)", "u": "transfer"}, {"id": "mc-sql-queries-segmentazioni-avanzate-aggregazioni--30", "area": "AUTOMATIONS", "name": "SQL Queries - Segmentazioni avanzate, aggregazioni, join e calcoli dinamici per generare DE", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di gestione dati (Data Management)", "u": "query"}, {"id": "mc-filter-activities-creazione-automatica-di-de-fil-31", "area": "AUTOMATIONS", "name": "Filter Activities - Creazione automatica di DE filtrate senza SQL", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di gestione dati (Data Management)", "u": "filtro"}, {"id": "mc-script-ssjs-gestione-avanzata-di-de-calcoli-cust-32", "area": "AUTOMATIONS", "name": "Script SSJS - Gestione avanzata di DE, calcoli custom o elaborazioni dati avanzate", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni di gestione dati (Data Management)", "u": "script"}, {"id": "mc-synchronized-data-extensions-sincronizzazione-st-34", "area": "AUTOMATIONS", "name": "Synchronized Data Extensions – Sincronizzazione standard da Salesforce CRM a SFMC", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di sincronizzazione dati CRM → SFMC", "u": "DE sincronizzata"}, {"id": "mc-sql-automation-su-dati-sincronizzati-creazione-a-35", "area": "AUTOMATIONS", "name": "SQL Automation su dati sincronizzati – Creazione automatica di cluster personalizzati usando dati sincronizzati da CRM", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di sincronizzazione dati CRM → SFMC", "u": "automation"}, {"id": "mc-journey-data-automation-journey-builder-entry-so-36", "area": "AUTOMATIONS", "name": "Journey Data Automation (Journey Builder Entry Source) – Creazione automatica audience da dati sincronizzati come entry source per Journey", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di sincronizzazione dati CRM → SFMC", "u": "automation"}, {"id": "mc-custom-api-integration-crm-sfmc-via-api-automazi-37", "area": "AUTOMATIONS", "name": "Custom API Integration (CRM → SFMC via API) – Automazione avanzata tramite integrazione API custom", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni di sincronizzazione dati CRM → SFMC", "u": "integrazione"}, {"id": "mc-scheduled-sends-email-sms-push-invio-pianificato-39", "area": "AUTOMATIONS", "name": "Scheduled Sends (Email/SMS/Push) – Invio pianificato semplice (es. newsletter settimanale)", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di invio messaggi (Email, SMS, Push)", "u": "invio"}, {"id": "mc-triggered-sends-invio-automatico-basato-su-event-40", "area": "AUTOMATIONS", "name": "Triggered Sends – Invio automatico basato su eventi specifici (es. acquisto, registrazione)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di invio messaggi (Email, SMS, Push)", "u": "invio"}, {"id": "mc-journey-builder-automations-automazione-avanzata-41", "area": "AUTOMATIONS", "name": "Journey Builder automations – Automazione avanzata basata su comportamento e regole decisionali in percorsi dinamici multicanale", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di invio messaggi (Email, SMS, Push)", "u": "automation"}, {"id": "mc-transactional-messaging-api-rest-api-invii-trans-42", "area": "AUTOMATIONS", "name": "Transactional Messaging API (REST API) – Invii transazionali real-time integrati tramite chiamate API", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni di invio messaggi (Email, SMS, Push)", "u": "integrazione"}, {"id": "mc-contact-deletion-automation-automazione-periodic-44", "area": "AUTOMATIONS", "name": "Contact Deletion Automation – Automazione periodica di cancellazione contatti inutilizzati (GDPR compliance)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di gestione contatti"}, {"id": "mc-contact-update-via-automation-sql-aggiornamenti--45", "area": "AUTOMATIONS", "name": "Contact Update via Automation (SQL) – Aggiornamenti automatici delle Data Extensions in base a modifiche attributi CRM", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di gestione contatti", "u": "automation"}, {"id": "mc-preference-center-update-automation-ssjs-ampscri-46", "area": "AUTOMATIONS", "name": "Preference Center Update Automation (SSJS/Ampscript) – Automazione personalizzata delle preferenze contatti basata su interazioni utente", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni di gestione contatti"}, {"id": "mc-tracking-data-cleanup-automazione-periodica-puli-48", "area": "AUTOMATIONS", "name": "Tracking Data Cleanup – Automazione periodica pulizia dati tracking/email inviate", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di manutenzione"}, {"id": "mc-error-handling-e-notifiche-automatiche-configura-49", "area": "AUTOMATIONS", "name": "Error Handling e notifiche automatiche – Configurazione automatica notifiche email in caso di errori di automazioni", "e": {"Basso": 2.5, "Medio": 5, "Alto": 8}, "sub": "Automazioni di manutenzione"}, {"id": "mc-data-archiving-automation-archiviazione-automati-50", "area": "AUTOMATIONS", "name": "Data Archiving Automation – Archiviazione automatica e periodica di dati storici (FTP/Cloud Storage)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di manutenzione", "u": "automation"}, {"id": "mc-einstein-send-time-optimization-automazione-per--52", "area": "AUTOMATIONS", "name": "Einstein Send Time Optimization – Automazione per invio automatico email nel momento migliore", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni Einstein (AI-driven) (se disponibili)"}, {"id": "mc-einstein-engagement-scoring-automation-automazio-53", "area": "AUTOMATIONS", "name": "Einstein Engagement Scoring Automation – Automazione basata su segmenti generati da punteggi Einstein (Engagement, Churn)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni Einstein (AI-driven) (se disponibili)"}, {"id": "mc-einstein-content-selection-next-best-action-auto-54", "area": "AUTOMATIONS", "name": "Einstein Content Selection (Next Best Action) – Automazione contenuti personalizzati in base al comportamento e preferenze predittive", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni Einstein (AI-driven) (se disponibili)"}, {"id": "mc-api-integration-automations-gestione-chiamate-ap-56", "area": "AUTOMATIONS", "name": "API Integration Automations – Gestione chiamate API tramite Automation Studio (es. recupero dati esterni)", "e": {"Basso": 24, "Medio": 40, "Alto": 64}, "sub": "Automazioni avanzate di integrazione esterna", "u": "automation"}, {"id": "mc-webhooks-integration-automazione-basata-su-event-57", "area": "AUTOMATIONS", "name": "Webhooks Integration – Automazione basata su eventi esterni (es. integrazione con siti web, CMS, e-commerce)", "e": {"Basso": 24, "Medio": 40, "Alto": 64}, "sub": "Automazioni avanzate di integrazione esterna", "u": "webhook"}, {"id": "mc-mulesoft-integration-automations-automazione-int-58", "area": "AUTOMATIONS", "name": "MuleSoft Integration Automations – Automazione integrazione dati cross-cloud Salesforce tramite MuleSoft", "e": {"Basso": 24, "Medio": 40, "Alto": 64}, "sub": "Automazioni avanzate di integrazione esterna"}, {"id": "mc-email-template-standard-drag-and-drop-60", "area": "TEMPLATE", "name": "Email Template Standard (drag-and-drop)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "u": "template"}, {"id": "mc-email-template-custom-senza-html-personalizzato-61", "area": "TEMPLATE", "name": "Email Template Custom (senza HTML personalizzato)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "template"}, {"id": "mc-email-template-dynamics-content-blocks-62", "area": "TEMPLATE", "name": "Email Template Dynamics Content Blocks", "e": {"Basso": 16, "Medio": 24, "Alto": 32}, "u": "template"}, {"id": "mc-template-sms-standard-63", "area": "TEMPLATE", "name": "Template SMS Standard", "e": {"Basso": 2, "Medio": 4, "Alto": 8}, "u": "template"}, {"id": "mc-template-sms-custom-con-personalizzazioni-avanza-64", "area": "TEMPLATE", "name": "Template SMS Custom (con personalizzazioni avanzate)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "u": "template"}, {"id": "mc-email-template-con-ampscript-personalizzato-65", "area": "TEMPLATE", "name": "Email Template con AMPScript personalizzato", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "template"}, {"id": "mc-template-dinamici-con-content-builder-66", "area": "TEMPLATE", "name": "Template dinamici con Content Builder", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "template"}, {"id": "mc-cloudpage-semplice-form-di-iscrizione-o-landing--68", "area": "CLOUDPAGES", "name": "CloudPage semplice (form di iscrizione o landing page statica)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "CloudPage"}, {"id": "mc-cloudpage-con-form-dinamico-gestione-dati-person-69", "area": "CLOUDPAGES", "name": "CloudPage con form dinamico (gestione dati personalizzati, integrazione DE)", "e": {"Basso": 16, "Medio": 24, "Alto": 32}, "u": "CloudPage"}, {"id": "mc-cloudpage-avanzata-con-logiche-personalizzate-am-70", "area": "CLOUDPAGES", "name": "CloudPage avanzata con logiche personalizzate (AMPscript, SSJS, integrazione API)", "e": {"Basso": 32, "Medio": 64, "Alto": 96}, "u": "CloudPage"}, {"id": "mc-cloudpage-con-contenuto-personalizzato-per-ogni--71", "area": "CLOUDPAGES", "name": "CloudPage con contenuto personalizzato per ogni utente (real-time personalization)", "e": {"Basso": 32, "Medio": 64, "Alto": 96}, "u": "CloudPage"}, {"id": "mc-intelligence-accesso-e-configurazione-dashboard--73", "area": "MONITORAGGIO (REPORTS & DASHBOARDS)", "name": "Intelligence (accesso e configurazione dashboard preconfigurate con dati standard)", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-intelligence-pivot-report-creazione-tabelle-e-re-74", "area": "MONITORAGGIO (REPORTS & DASHBOARDS)", "name": "Intelligence Pivot + Report (creazione tabelle e report personalizzati con dati disponibili in MC)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "report"}, {"id": "mc-report-standard-mc-con-automazione-invio-75", "area": "MONITORAGGIO (REPORTS & DASHBOARDS)", "name": "Report Standard MC (con automazione invio)", "e": {"Basso": 4, "Medio": 8, "Alto": 12}, "u": "report"}, {"id": "mc-de-di-tracking-e-monitoraggio-custom-via-codice-76", "area": "MONITORAGGIO (REPORTS & DASHBOARDS)", "name": "DE di Tracking e Monitoraggio (Custom, via codice)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "u": "DE"}, {"id": "mc-analisi-privacy-e-conformita-gdpr-ccpa-ecc-78", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Analisi privacy e conformità (GDPR, CCPA, ecc.)", "e": {"Basso": 16, "Medio": 40, "Alto": 32}}, {"id": "mc-setup-gestione-consensi-subscription-center-79", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Setup gestione consensi (Subscription Center)", "e": {"Basso": 16, "Medio": 24, "Alto": 40}}, {"id": "mc-preference-center-base-html-ampscript-senza-inte-80", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Preference Center base (HTML/AMPscript, senza integrazione real-time)", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-preference-center-custom-con-integrazione-parzia-81", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Preference Center custom con integrazione parziale su CRM (solo update DE)", "e": {"Basso": 24, "Medio": 32, "Alto": 48}}, {"id": "mc-preference-center-totalmente-custom-con-integraz-82", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Preference Center totalmente custom con integrazione real-time su CRM (via API)", "e": {"Basso": 40, "Medio": 56, "Alto": 72}}, {"id": "mc-einstein-content-testing-84", "area": "EINSTEIN", "name": "Einstein Content Testing", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-einstein-engagement-scoring-85", "area": "EINSTEIN", "name": "Einstein Engagement Scoring", "e": {"Basso": 8, "Medio": 12, "Alto": 16}}, {"id": "mc-einstein-messaging-insights-86", "area": "EINSTEIN", "name": "Einstein Messaging Insights", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-einstein-send-time-optimization-87", "area": "EINSTEIN", "name": "Einstein Send Time Optimization", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-configurazione-multi-org-89", "area": "BUSINESS UNIT AGGIUNTIVE", "name": "Configurazione Multi-org", "e": {"Basso": 96, "Medio": 128, "Alto": 160}, "u": "business unit"}, {"id": "mc-setup-base-push-notification-configurazione-base-91", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "Setup base Push Notification (configurazione base e invio semplice)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-push-notification-avanzata-con-logiche-personali-92", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "Push Notification avanzata con logiche personalizzate (segmentazione dinamica)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "u": "notifica"}, {"id": "mc-in-app-message-base-contenuti-standardizzati-93", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "In-App Message base (contenuti standardizzati)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "messaggio"}, {"id": "mc-in-app-message-avanzato-contenuti-dinamici-perso-94", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "In-App Message avanzato (contenuti dinamici personalizzati)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "u": "messaggio"}, {"id": "mc-push-notification-geofencing-110", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "Push Notification Geofencing", "e": {"Basso": 32, "Medio": 48, "Alto": 64}}, {"id": "mc-integrazione-con-google-analytics-96", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione con Google Analytics", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-integrazione-con-sistemi-di-terze-parti-via-api-97", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione con sistemi di terze parti via API", "e": {"Basso": 32, "Medio": 48, "Alto": 64}, "u": "integrazione"}, {"id": "mc-integrazione-con-facebook-e-altri-canali-pubblic-98", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione con Facebook e altri canali pubblicitari", "e": {"Basso": 24, "Medio": 32, "Alto": 48}, "u": "canale"}, {"id": "mc-configurazione-di-api-data-extensions-99", "area": "INTEGRAZIONI TERZE PARTI", "name": "Configurazione di API Data Extensions", "e": {"Basso": 24, "Medio": 32, "Alto": 48}, "u": "API DE"}, {"id": "mc-integrazione-base-con-whatsapp-configurazione-ap-100", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione base con WhatsApp (configurazione API, messaggi semplici)", "e": {"Basso": 24, "Medio": 40, "Alto": 56}}, {"id": "mc-integrazione-whatsapp-con-logiche-avanzate-conte-101", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione WhatsApp con logiche avanzate (contenuti dinamici, flussi conversazionali)", "e": {"Basso": 40, "Medio": 56, "Alto": 80}}, {"id": "mc-whatsapp-business-con-interazione-multi-canale-e-102", "area": "INTEGRAZIONI TERZE PARTI", "name": "WhatsApp business con interazione multi-canale (es. integrazione con Email o SMS)", "e": {"Basso": 48, "Medio": 64, "Alto": 96}}, {"id": "mc-formazione-base-utenti-interfaccia-e-funzionalit-104", "area": "FORMAZIONE E SUPPORTO", "name": "Formazione base utenti (interfaccia e funzionalità base)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "sessione"}, {"id": "mc-formazione-avanzata-journey-builder-automation-s-105", "area": "FORMAZIONE E SUPPORTO", "name": "Formazione avanzata (Journey Builder, Automation Studio, ecc.)", "e": {"Basso": 16, "Medio": 24, "Alto": 40}, "u": "sessione"}, {"id": "mc-supporto-post-lancio-fine-tuning-ottimizzazioni-106", "area": "FORMAZIONE E SUPPORTO", "name": "Supporto post-lancio (fine tuning, ottimizzazioni)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}}, {"id": "mc-segmentazione-email-per-dominio-114", "area": "IP WARM-UP", "name": "Segmentazione Email per Dominio", "e": {"Basso": 8, "Medio": 12, "Alto": 16}}, {"id": "mc-creazione-de-e-automation-per-warm-up-115", "area": "IP WARM-UP", "name": "Creazione DE e Automation per Warm-up", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-creazione-customer-journey-per-invii-116", "area": "IP WARM-UP", "name": "Creazione Customer Journey per invii", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-monitoraggio-invii-e-regolazione-117", "area": "IP WARM-UP", "name": "Monitoraggio invii e regolazione", "e": {"Basso": 12, "Medio": 20, "Alto": 32}}], "intelligence": [{"id": "int-discovery-4", "area": "DISCOVERY & ANALISI", "name": "Discovery", "e": {"Basso": 16, "Medio": 32, "Alto": 64}}, {"id": "int-analisi-dati-5", "area": "DISCOVERY & ANALISI", "name": "Analisi dati", "e": {"Basso": 24, "Medio": 48, "Alto": 80}}, {"id": "int-setup-piattaforma-intelligence-7", "area": "SETUP INTELLIGENCE & INTEGRAZIONE DATI", "name": "Setup piattaforma Intelligence", "e": {"Basso": 32, "Medio": 64, "Alto": 96}}, {"id": "int-data-stream-marketing-vendors-connettori-nativi-9", "area": "INGESTION", "name": "Data Stream - Marketing Vendors (connettori nativi)", "e": {"Basso": 16, "Medio": 32, "Alto": 64}, "u": "data stream"}, {"id": "int-data-stream-total-connect-csv-con-molti-dati-10", "area": "INGESTION", "name": "Data Stream - Total Connect (csv con molti dati)", "e": {"Basso": 24, "Medio": 48, "Alto": 96}, "u": "data stream"}, {"id": "int-data-stream-lite-connect-csv-con-pochi-dati-11", "area": "INGESTION", "name": "Data Stream - Lite Connect (csv con pochi dati)", "e": {"Basso": 16, "Medio": 32, "Alto": 56}, "u": "data stream"}, {"id": "int-data-stream-connettori-api-based-12", "area": "INGESTION", "name": "Data Stream - Connettori API Based", "e": {"Basso": 32, "Medio": 64, "Alto": 120}, "u": "data stream"}, {"id": "int-data-classification-14", "area": "ARMONIZZAZIONE", "name": "Data Classification", "e": {"Basso": 16, "Medio": 40, "Alto": 64}}, {"id": "int-patterns-15", "area": "ARMONIZZAZIONE", "name": "Patterns", "e": {"Basso": 24, "Medio": 56, "Alto": 96}, "u": "pattern"}, {"id": "int-harmonized-dimensions-16", "area": "ARMONIZZAZIONE", "name": "Harmonized Dimensions", "e": {"Basso": 24, "Medio": 48, "Alto": 80}, "u": "dimensione"}, {"id": "int-fix-maintain-17", "area": "ARMONIZZAZIONE", "name": "Fix & Maintain", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "recurring": true}, {"id": "int-standard-dashboard-dimensions-measurements-stand-19", "area": "DASHBOARDS", "name": "Standard Dashboard (dimensions & measurements standard)", "e": {"Basso": 16, "Medio": 32, "Alto": 56}, "u": "dashboard"}, {"id": "int-custom-dashboard-no-style-only-data-con-calculat-20", "area": "DASHBOARDS", "name": "Custom Dashboard (no style, only data con calculated dimensios e measurements custom)", "e": {"Basso": 24, "Medio": 48, "Alto": 80}, "u": "dashboard"}, {"id": "int-advanced-dashboard-w-custom-branding-css-logo-cl-21", "area": "DASHBOARDS", "name": "Advanced Dashboard w/ custom branding & CSS (logo cliente e personalizzazioni grafiche )", "e": {"Basso": 40, "Medio": 80, "Alto": 120}, "u": "dashboard"}, {"id": "int-workflows-23", "area": "AUTOMAZIONI", "name": "Workflows", "e": {"Basso": 24, "Medio": 56, "Alto": 96}, "u": "workflow"}, {"id": "int-data-fusion-24", "area": "AUTOMAZIONI", "name": "Data Fusion", "e": {"Basso": 32, "Medio": 64, "Alto": 120}}, {"id": "int-data-actions-automazione-delle-azioni-sui-dati-25", "area": "AUTOMAZIONI", "name": "Data Actions (Automazione delle azioni sui dati)", "e": {"Basso": 16, "Medio": 40, "Alto": 80}, "u": "data action"}, {"id": "int-data-streams-automazione-flusso-di-dati-26", "area": "AUTOMAZIONI", "name": "Data Streams (Automazione flusso di dati)", "e": {"Basso": 24, "Medio": 48, "Alto": 96}, "u": "data stream"}, {"id": "int-calculated-fields-automation-27", "area": "AUTOMAZIONI", "name": "Calculated Fields Automation", "e": {"Basso": 16, "Medio": 32, "Alto": 64}, "u": "campo"}, {"id": "int-monitoraggio-e-ottimizzazione-delle-performance-29", "area": "MONITORAGGIO & OTTIMIZZAZIONE", "name": "Monitoraggio e Ottimizzazione delle Performance", "e": {"Basso": 24, "Medio": 48, "Alto": 80}}, {"id": "int-monitoraggio-kpi-di-campagne-su-scala-globale-30", "area": "MONITORAGGIO & OTTIMIZZAZIONE", "name": "Monitoraggio KPI di campagne su scala globale", "e": {"Basso": 24, "Medio": 56, "Alto": 96}}, {"id": "int-sicurezza-e-compliance-gdpr-ccpa-31", "area": "MONITORAGGIO & OTTIMIZZAZIONE", "name": "Sicurezza e Compliance (GDPR, CCPA)", "e": {"Basso": 16, "Medio": 40, "Alto": 64}}, {"id": "int-test-e-quality-assurance-qa-32", "area": "MONITORAGGIO & OTTIMIZZAZIONE", "name": "Test e Quality Assurance (QA)", "e": {"Basso": 16, "Medio": 40, "Alto": 64}}, {"id": "int-formazione-utenti-34", "area": "FORMAZIONE & MANUTENZIONE", "name": "Formazione Utenti", "e": {"Basso": 16, "Medio": 32, "Alto": 56}, "u": "sessione"}, {"id": "int-evolutive-nuove-integrazioni-e-metriche-35", "area": "FORMAZIONE & MANUTENZIONE", "name": "Evolutive (Nuove integrazioni e metriche)", "e": {"Basso": 16, "Medio": 40, "Alto": 80}}, {"id": "int-maintenance-36", "area": "FORMAZIONE & MANUTENZIONE", "name": "Maintenance", "e": {"Basso": 16, "Medio": 32, "Alto": 64}, "recurring": true}, {"id": "int-gestione-e-manutenzione-pattern-37", "area": "FORMAZIONE & MANUTENZIONE", "name": "Gestione e Manutenzione Pattern", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "recurring": true}]};
+var CATALOG = {"mce": [{"id": "mc-discovery-e-raccolta-requisiti-4", "area": "DISCOVERY, ANALISI, PIANIFICAZIONE", "name": "Discovery e raccolta requisiti", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-assessment-infrastrutturale-as-is-5", "area": "DISCOVERY, ANALISI, PIANIFICAZIONE", "name": "Assessment infrastrutturale as-is", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-pianificazione-e-strategia-di-marketing-6", "area": "DISCOVERY, ANALISI, PIANIFICAZIONE", "name": "Pianificazione e strategia di marketing", "e": {"Basso": 16, "Medio": 32, "Alto": 48}}, {"id": "mc-progettazione-del-data-model-des-campi-relazioni-7", "area": "DISCOVERY, ANALISI, PIANIFICAZIONE", "name": "Progettazione del Data Model (DEs, campi, relazioni)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}}, {"id": "mc-account-information-9", "area": "SETUP", "name": "Account Information", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-creazione-utenze-ruoli-permessi-utenti-10", "area": "SETUP", "name": "Creazione utenze, ruoli, permessi utenti", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-configurazione-sap-e-certificati-ssl-delegated-d-11", "area": "SETUP", "name": "Configurazione SAP e Certificati SSL (Delegated Domain)", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-configurazione-sap-e-certificati-ssl-self-hosted-12", "area": "SETUP", "name": "Configurazione SAP e Certificati SSL (Self Hosted Domain)", "e": {"Basso": 24, "Medio": 32, "Alto": 40}}, {"id": "mc-configurazione-sender-profile-delivery-profile-e-13", "area": "SETUP", "name": "Configurazione Sender Profile, Delivery Profile e Send Classifications", "e": {"Basso": 8, "Medio": 12, "Alto": 16}}, {"id": "mc-configurazione-sftp-location-14", "area": "SETUP", "name": "Configurazione SFTP Location", "e": {"Basso": 4, "Medio": 8, "Alto": 16}}, {"id": "mc-integrazione-con-crm-installazione-e-configurazi-15", "area": "SETUP", "name": "Integrazione con CRM (installazione e configurazione connettore)", "e": {"Basso": 24, "Medio": 40, "Alto": 56}}, {"id": "mc-reply-mail-management-16", "area": "SETUP", "name": "Reply Mail Management", "e": {"Basso": 8, "Medio": 16, "Alto": 32}}, {"id": "mc-segmentazione-base-con-de-filtrate-su-sync-stati-18", "area": "SEGMENTAZIONE (1 unità = 1 DE per Campagna)", "name": "Segmentazione base con DE Filtrate su Sync (statica)", "e": {"Basso": 1.5, "Medio": 4, "Alto": 8}, "u": "DE di campagna"}, {"id": "mc-segmentazione-avanzata-con-automation-sql-dinami-19", "area": "SEGMENTAZIONE (1 unità = 1 DE per Campagna)", "name": "Segmentazione avanzata con Automation/SQL (dinamica)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "u": "DE di campagna"}, {"id": "mc-customer-journey-semplice-email-sms-decision-spl-21", "area": "CUSTOMER JOURNEYS", "name": "Customer Journey semplice (email/sms + decision split su journey data)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "journey"}, {"id": "mc-customer-journey-avanzato-logiche-complesse-cust-22", "area": "CUSTOMER JOURNEYS", "name": "Customer Journey avanzato (logiche complesse + customer data)", "e": {"Basso": 24, "Medio": 40, "Alto": 56}, "u": "journey"}, {"id": "mc-customer-journey-semplice-da-salesforce-data-eve-23", "area": "CUSTOMER JOURNEYS", "name": "Customer Journey semplice da Salesforce Data Event / Automation", "e": {"Basso": 8, "Medio": 20, "Alto": 32}, "u": "journey"}, {"id": "mc-customer-journey-avanzato-da-salesforce-data-eve-24", "area": "CUSTOMER JOURNEYS", "name": "Customer Journey avanzato da Salesforce Data Event / Automation", "e": {"Basso": 20, "Medio": 32, "Alto": 48}, "u": "journey"}, {"id": "mc-import-file-caricamento-automatico-di-file-csv-f-27", "area": "AUTOMATIONS", "name": "Import file - Caricamento automatico di file CSV/FTP in Data Extensions", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di gestione dati (Data Management)", "u": "import"}, {"id": "mc-data-extract-esportazione-automatica-dei-dati-de-28", "area": "AUTOMATIONS", "name": "Data Extract - Esportazione automatica dei dati (DE --> FTP)", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di gestione dati (Data Management)", "u": "extract"}, {"id": "mc-file-transfer-ftp-spostamento-automatico-dei-fil-29", "area": "AUTOMATIONS", "name": "File Transfer (FTP) - Spostamento automatico dei file da e verso FTP", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di gestione dati (Data Management)", "u": "transfer"}, {"id": "mc-sql-queries-segmentazioni-avanzate-aggregazioni--30", "area": "AUTOMATIONS", "name": "SQL Queries - Segmentazioni avanzate, aggregazioni, join e calcoli dinamici per generare DE", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di gestione dati (Data Management)", "u": "query"}, {"id": "mc-filter-activities-creazione-automatica-di-de-fil-31", "area": "AUTOMATIONS", "name": "Filter Activities - Creazione automatica di DE filtrate senza SQL", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di gestione dati (Data Management)", "u": "filtro"}, {"id": "mc-script-ssjs-gestione-avanzata-di-de-calcoli-cust-32", "area": "AUTOMATIONS", "name": "Script SSJS - Gestione avanzata di DE, calcoli custom o elaborazioni dati avanzate", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni di gestione dati (Data Management)", "u": "script"}, {"id": "mc-synchronized-data-extensions-sincronizzazione-st-34", "area": "AUTOMATIONS", "name": "Synchronized Data Extensions – Sincronizzazione standard da Salesforce CRM a SFMC", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di sincronizzazione dati CRM → SFMC", "u": "DE sincronizzata"}, {"id": "mc-sql-automation-su-dati-sincronizzati-creazione-a-35", "area": "AUTOMATIONS", "name": "SQL Automation su dati sincronizzati – Creazione automatica di cluster personalizzati usando dati sincronizzati da CRM", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di sincronizzazione dati CRM → SFMC", "u": "automation"}, {"id": "mc-journey-data-automation-journey-builder-entry-so-36", "area": "AUTOMATIONS", "name": "Journey Data Automation (Journey Builder Entry Source) – Creazione automatica audience da dati sincronizzati come entry source per Journey", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di sincronizzazione dati CRM → SFMC", "u": "automation"}, {"id": "mc-custom-api-integration-crm-sfmc-via-api-automazi-37", "area": "AUTOMATIONS", "name": "Custom API Integration (CRM → SFMC via API) – Automazione avanzata tramite integrazione API custom", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni di sincronizzazione dati CRM → SFMC", "u": "integrazione"}, {"id": "mc-scheduled-sends-email-sms-push-invio-pianificato-39", "area": "AUTOMATIONS", "name": "Scheduled Sends (Email/SMS/Push) – Invio pianificato semplice (es. newsletter settimanale)", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni di invio messaggi (Email, SMS, Push)", "u": "invio"}, {"id": "mc-triggered-sends-invio-automatico-basato-su-event-40", "area": "AUTOMATIONS", "name": "Triggered Sends – Invio automatico basato su eventi specifici (es. acquisto, registrazione)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di invio messaggi (Email, SMS, Push)", "u": "invio"}, {"id": "mc-journey-builder-automations-automazione-avanzata-41", "area": "AUTOMATIONS", "name": "Journey Builder automations – Automazione avanzata basata su comportamento e regole decisionali in percorsi dinamici multicanale", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di invio messaggi (Email, SMS, Push)", "u": "automation"}, {"id": "mc-transactional-messaging-api-rest-api-invii-trans-42", "area": "AUTOMATIONS", "name": "Transactional Messaging API (REST API) – Invii transazionali real-time integrati tramite chiamate API", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni di invio messaggi (Email, SMS, Push)", "u": "integrazione"}, {"id": "mc-contact-deletion-automation-automazione-periodic-44", "area": "AUTOMATIONS", "name": "Contact Deletion Automation – Automazione periodica di cancellazione contatti inutilizzati (GDPR compliance)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di gestione contatti"}, {"id": "mc-contact-update-via-automation-sql-aggiornamenti--45", "area": "AUTOMATIONS", "name": "Contact Update via Automation (SQL) – Aggiornamenti automatici delle Data Extensions in base a modifiche attributi CRM", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di gestione contatti", "u": "automation"}, {"id": "mc-preference-center-update-automation-ssjs-ampscri-46", "area": "AUTOMATIONS", "name": "Preference Center Update Automation (SSJS/Ampscript) – Automazione personalizzata delle preferenze contatti basata su interazioni utente", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni di gestione contatti"}, {"id": "mc-tracking-data-cleanup-automazione-periodica-puli-48", "area": "AUTOMATIONS", "name": "Tracking Data Cleanup – Automazione periodica pulizia dati tracking/email inviate", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di manutenzione"}, {"id": "mc-error-handling-e-notifiche-automatiche-configura-49", "area": "AUTOMATIONS", "name": "Error Handling e notifiche automatiche – Configurazione automatica notifiche email in caso di errori di automazioni", "e": {"Basso": 2.5, "Medio": 5, "Alto": 8}, "sub": "Automazioni di manutenzione"}, {"id": "mc-data-archiving-automation-archiviazione-automati-50", "area": "AUTOMATIONS", "name": "Data Archiving Automation – Archiviazione automatica e periodica di dati storici (FTP/Cloud Storage)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni di manutenzione", "u": "automation"}, {"id": "mc-einstein-send-time-optimization-automazione-per--52", "area": "AUTOMATIONS", "name": "Einstein Send Time Optimization – Automazione per invio automatico email nel momento migliore", "e": {"Basso": 1, "Medio": 1.5, "Alto": 3}, "sub": "Automazioni Einstein (AI-driven) (se disponibili)"}, {"id": "mc-einstein-engagement-scoring-automation-automazio-53", "area": "AUTOMATIONS", "name": "Einstein Engagement Scoring Automation – Automazione basata su segmenti generati da punteggi Einstein (Engagement, Churn)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "sub": "Automazioni Einstein (AI-driven) (se disponibili)"}, {"id": "mc-einstein-content-selection-next-best-action-auto-54", "area": "AUTOMATIONS", "name": "Einstein Content Selection (Next Best Action) – Automazione contenuti personalizzati in base al comportamento e preferenze predittive", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "sub": "Automazioni Einstein (AI-driven) (se disponibili)"}, {"id": "mc-api-integration-automations-gestione-chiamate-ap-56", "area": "AUTOMATIONS", "name": "API Integration Automations – Gestione chiamate API tramite Automation Studio (es. recupero dati esterni)", "e": {"Basso": 24, "Medio": 40, "Alto": 64}, "sub": "Automazioni avanzate di integrazione esterna", "u": "automation"}, {"id": "mc-webhooks-integration-automazione-basata-su-event-57", "area": "AUTOMATIONS", "name": "Webhooks Integration – Automazione basata su eventi esterni (es. integrazione con siti web, CMS, e-commerce)", "e": {"Basso": 24, "Medio": 40, "Alto": 64}, "sub": "Automazioni avanzate di integrazione esterna", "u": "webhook"}, {"id": "mc-mulesoft-integration-automations-automazione-int-58", "area": "AUTOMATIONS", "name": "MuleSoft Integration Automations – Automazione integrazione dati cross-cloud Salesforce tramite MuleSoft", "e": {"Basso": 24, "Medio": 40, "Alto": 64}, "sub": "Automazioni avanzate di integrazione esterna"}, {"id": "mc-email-template-standard-drag-and-drop-60", "area": "TEMPLATE", "name": "Email Template Standard (drag-and-drop)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "u": "template"}, {"id": "mc-email-template-custom-senza-html-personalizzato-61", "area": "TEMPLATE", "name": "Email Template Custom (senza HTML personalizzato)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "template"}, {"id": "mc-email-template-dynamics-content-blocks-62", "area": "TEMPLATE", "name": "Email Template Dynamics Content Blocks", "e": {"Basso": 16, "Medio": 24, "Alto": 32}, "u": "template"}, {"id": "mc-template-sms-standard-63", "area": "TEMPLATE", "name": "Template SMS Standard", "e": {"Basso": 2, "Medio": 4, "Alto": 8}, "u": "template"}, {"id": "mc-template-sms-custom-con-personalizzazioni-avanza-64", "area": "TEMPLATE", "name": "Template SMS Custom (con personalizzazioni avanzate)", "e": {"Basso": 4, "Medio": 8, "Alto": 16}, "u": "template"}, {"id": "mc-email-template-con-ampscript-personalizzato-65", "area": "TEMPLATE", "name": "Email Template con AMPScript personalizzato", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "template"}, {"id": "mc-template-dinamici-con-content-builder-66", "area": "TEMPLATE", "name": "Template dinamici con Content Builder", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "template"}, {"id": "mc-cloudpage-semplice-form-di-iscrizione-o-landing--68", "area": "CLOUDPAGES", "name": "CloudPage semplice (form di iscrizione o landing page statica)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "CloudPage"}, {"id": "mc-cloudpage-con-form-dinamico-gestione-dati-person-69", "area": "CLOUDPAGES", "name": "CloudPage con form dinamico (gestione dati personalizzati, integrazione DE)", "e": {"Basso": 16, "Medio": 24, "Alto": 32}, "u": "CloudPage"}, {"id": "mc-cloudpage-avanzata-con-logiche-personalizzate-am-70", "area": "CLOUDPAGES", "name": "CloudPage avanzata con logiche personalizzate (AMPscript, SSJS, integrazione API)", "e": {"Basso": 32, "Medio": 64, "Alto": 96}, "u": "CloudPage"}, {"id": "mc-cloudpage-con-contenuto-personalizzato-per-ogni--71", "area": "CLOUDPAGES", "name": "CloudPage con contenuto personalizzato per ogni utente (real-time personalization)", "e": {"Basso": 32, "Medio": 64, "Alto": 96}, "u": "CloudPage"}, {"id": "mc-intelligence-accesso-e-configurazione-dashboard--73", "area": "MONITORAGGIO (REPORTS & DASHBOARDS)", "name": "Intelligence (accesso e configurazione dashboard preconfigurate con dati standard)", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-intelligence-pivot-report-creazione-tabelle-e-re-74", "area": "MONITORAGGIO (REPORTS & DASHBOARDS)", "name": "Intelligence Pivot + Report (creazione tabelle e report personalizzati con dati disponibili in MC)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "report"}, {"id": "mc-report-standard-mc-con-automazione-invio-75", "area": "MONITORAGGIO (REPORTS & DASHBOARDS)", "name": "Report Standard MC (con automazione invio)", "e": {"Basso": 4, "Medio": 8, "Alto": 12}, "u": "report"}, {"id": "mc-de-di-tracking-e-monitoraggio-custom-via-codice-76", "area": "MONITORAGGIO (REPORTS & DASHBOARDS)", "name": "DE di Tracking e Monitoraggio (Custom, via codice)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "u": "DE"}, {"id": "mc-analisi-privacy-e-conformita-gdpr-ccpa-ecc-78", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Analisi privacy e conformità (GDPR, CCPA, ecc.)", "e": {"Basso": 16, "Medio": 40, "Alto": 40}}, {"id": "mc-setup-gestione-consensi-subscription-center-79", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Setup gestione consensi (Subscription Center)", "e": {"Basso": 16, "Medio": 24, "Alto": 40}}, {"id": "mc-preference-center-base-html-ampscript-senza-inte-80", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Preference Center base (HTML/AMPscript, senza integrazione real-time)", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-preference-center-custom-con-integrazione-parzia-81", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Preference Center custom con integrazione parziale su CRM (solo update DE)", "e": {"Basso": 24, "Medio": 32, "Alto": 48}}, {"id": "mc-preference-center-totalmente-custom-con-integraz-82", "area": "PRIVACY & GESTIONE CONSENSI", "name": "Preference Center totalmente custom con integrazione real-time su CRM (via API)", "e": {"Basso": 40, "Medio": 56, "Alto": 72}}, {"id": "mc-einstein-content-testing-84", "area": "EINSTEIN", "name": "Einstein Content Testing", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-einstein-engagement-scoring-85", "area": "EINSTEIN", "name": "Einstein Engagement Scoring", "e": {"Basso": 8, "Medio": 12, "Alto": 16}}, {"id": "mc-einstein-messaging-insights-86", "area": "EINSTEIN", "name": "Einstein Messaging Insights", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-einstein-send-time-optimization-87", "area": "EINSTEIN", "name": "Einstein Send Time Optimization", "e": {"Basso": 4, "Medio": 8, "Alto": 12}}, {"id": "mc-configurazione-multi-org-89", "area": "BUSINESS UNIT AGGIUNTIVE", "name": "Configurazione Multi-org", "e": {"Basso": 96, "Medio": 128, "Alto": 160}, "u": "business unit"}, {"id": "mc-setup-base-push-notification-configurazione-base-91", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "Setup base Push Notification (configurazione base e invio semplice)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-push-notification-avanzata-con-logiche-personali-92", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "Push Notification avanzata con logiche personalizzate (segmentazione dinamica)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "u": "notifica"}, {"id": "mc-in-app-message-base-contenuti-standardizzati-93", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "In-App Message base (contenuti standardizzati)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}, "u": "messaggio"}, {"id": "mc-in-app-message-avanzato-contenuti-dinamici-perso-94", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "In-App Message avanzato (contenuti dinamici personalizzati)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "u": "messaggio"}, {"id": "mc-push-notification-geofencing-110", "area": "PUSH NOTIFICATION & IN-APP MESSAGES", "name": "Push Notification Geofencing", "e": {"Basso": 32, "Medio": 48, "Alto": 64}}, {"id": "mc-integrazione-con-google-analytics-96", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione con Google Analytics", "e": {"Basso": 16, "Medio": 24, "Alto": 32}}, {"id": "mc-integrazione-con-sistemi-di-terze-parti-via-api-97", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione con sistemi di terze parti via API", "e": {"Basso": 32, "Medio": 48, "Alto": 64}, "u": "integrazione"}, {"id": "mc-integrazione-con-facebook-e-altri-canali-pubblic-98", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione con Facebook e altri canali pubblicitari", "e": {"Basso": 24, "Medio": 32, "Alto": 48}, "u": "canale"}, {"id": "mc-configurazione-di-api-data-extensions-99", "area": "INTEGRAZIONI TERZE PARTI", "name": "Configurazione di API Data Extensions", "e": {"Basso": 24, "Medio": 32, "Alto": 48}, "u": "API DE"}, {"id": "mc-integrazione-base-con-whatsapp-configurazione-ap-100", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione base con WhatsApp (configurazione API, messaggi semplici)", "e": {"Basso": 24, "Medio": 40, "Alto": 56}}, {"id": "mc-integrazione-whatsapp-con-logiche-avanzate-conte-101", "area": "INTEGRAZIONI TERZE PARTI", "name": "Integrazione WhatsApp con logiche avanzate (contenuti dinamici, flussi conversazionali)", "e": {"Basso": 40, "Medio": 56, "Alto": 80}}, {"id": "mc-whatsapp-business-con-interazione-multi-canale-e-102", "area": "INTEGRAZIONI TERZE PARTI", "name": "WhatsApp business con interazione multi-canale (es. integrazione con Email o SMS)", "e": {"Basso": 48, "Medio": 64, "Alto": 96}}, {"id": "mc-formazione-base-utenti-interfaccia-e-funzionalit-104", "area": "FORMAZIONE E SUPPORTO", "name": "Formazione base utenti (interfaccia e funzionalità base)", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-formazione-avanzata-journey-builder-automation-s-105", "area": "FORMAZIONE E SUPPORTO", "name": "Formazione avanzata (Journey Builder, Automation Studio, ecc.)", "e": {"Basso": 16, "Medio": 24, "Alto": 40}}, {"id": "mc-supporto-post-lancio-fine-tuning-ottimizzazioni-106", "area": "FORMAZIONE E SUPPORTO", "name": "Supporto post-lancio (fine tuning, ottimizzazioni)", "e": {"Basso": 16, "Medio": 32, "Alto": 48}}, {"id": "mc-segmentazione-email-per-dominio-114", "area": "IP WARM-UP", "name": "Segmentazione Email per Dominio", "e": {"Basso": 8, "Medio": 12, "Alto": 16}}, {"id": "mc-creazione-de-e-automation-per-warm-up-115", "area": "IP WARM-UP", "name": "Creazione DE e Automation per Warm-up", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-creazione-customer-journey-per-invii-116", "area": "IP WARM-UP", "name": "Creazione Customer Journey per invii", "e": {"Basso": 8, "Medio": 16, "Alto": 24}}, {"id": "mc-monitoraggio-invii-e-regolazione-117", "area": "IP WARM-UP", "name": "Monitoraggio invii e regolazione", "e": {"Basso": 12, "Medio": 20, "Alto": 32}}], "intelligence": [{"id": "int-discovery-4", "area": "DISCOVERY & ANALISI", "name": "Discovery", "e": {"Basso": 16, "Medio": 32, "Alto": 64}}, {"id": "int-analisi-dati-5", "area": "DISCOVERY & ANALISI", "name": "Analisi dati", "e": {"Basso": 24, "Medio": 48, "Alto": 80}}, {"id": "int-setup-piattaforma-intelligence-7", "area": "SETUP INTELLIGENCE & INTEGRAZIONE DATI", "name": "Setup piattaforma Intelligence", "e": {"Basso": 32, "Medio": 64, "Alto": 96}}, {"id": "int-data-stream-marketing-vendors-connettori-nativi-9", "area": "INGESTION", "name": "Data Stream - Marketing Vendors (connettori nativi)", "e": {"Basso": 16, "Medio": 32, "Alto": 64}, "u": "data stream"}, {"id": "int-data-stream-total-connect-csv-con-molti-dati-10", "area": "INGESTION", "name": "Data Stream - Total Connect (csv con molti dati)", "e": {"Basso": 24, "Medio": 48, "Alto": 96}, "u": "data stream"}, {"id": "int-data-stream-lite-connect-csv-con-pochi-dati-11", "area": "INGESTION", "name": "Data Stream - Lite Connect (csv con pochi dati)", "e": {"Basso": 16, "Medio": 32, "Alto": 56}, "u": "data stream"}, {"id": "int-data-stream-connettori-api-based-12", "area": "INGESTION", "name": "Data Stream - Connettori API Based", "e": {"Basso": 32, "Medio": 64, "Alto": 120}, "u": "data stream"}, {"id": "int-data-classification-14", "area": "ARMONIZZAZIONE", "name": "Data Classification", "e": {"Basso": 16, "Medio": 40, "Alto": 64}}, {"id": "int-patterns-15", "area": "ARMONIZZAZIONE", "name": "Patterns", "e": {"Basso": 24, "Medio": 56, "Alto": 96}, "u": "pattern"}, {"id": "int-harmonized-dimensions-16", "area": "ARMONIZZAZIONE", "name": "Harmonized Dimensions", "e": {"Basso": 24, "Medio": 48, "Alto": 80}, "u": "dimensione"}, {"id": "int-fix-maintain-17", "area": "ARMONIZZAZIONE", "name": "Fix & Maintain", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "recurring": true}, {"id": "int-standard-dashboard-dimensions-measurements-stand-19", "area": "DASHBOARDS", "name": "Standard Dashboard (dimensions & measurements standard)", "e": {"Basso": 16, "Medio": 32, "Alto": 56}, "u": "dashboard"}, {"id": "int-custom-dashboard-no-style-only-data-con-calculat-20", "area": "DASHBOARDS", "name": "Custom Dashboard (no style, only data con calculated dimensios e measurements custom)", "e": {"Basso": 24, "Medio": 48, "Alto": 80}, "u": "dashboard"}, {"id": "int-advanced-dashboard-w-custom-branding-css-logo-cl-21", "area": "DASHBOARDS", "name": "Advanced Dashboard w/ custom branding & CSS (logo cliente e personalizzazioni grafiche )", "e": {"Basso": 40, "Medio": 80, "Alto": 120}, "u": "dashboard"}, {"id": "int-workflows-23", "area": "AUTOMAZIONI", "name": "Workflows", "e": {"Basso": 24, "Medio": 56, "Alto": 96}, "u": "workflow"}, {"id": "int-data-fusion-24", "area": "AUTOMAZIONI", "name": "Data Fusion", "e": {"Basso": 32, "Medio": 64, "Alto": 120}}, {"id": "int-data-actions-automazione-delle-azioni-sui-dati-25", "area": "AUTOMAZIONI", "name": "Data Actions (Automazione delle azioni sui dati)", "e": {"Basso": 16, "Medio": 40, "Alto": 80}, "u": "data action"}, {"id": "int-data-streams-automazione-flusso-di-dati-26", "area": "AUTOMAZIONI", "name": "Data Streams (Automazione flusso di dati)", "e": {"Basso": 24, "Medio": 48, "Alto": 96}, "u": "data stream"}, {"id": "int-calculated-fields-automation-27", "area": "AUTOMAZIONI", "name": "Calculated Fields Automation", "e": {"Basso": 16, "Medio": 32, "Alto": 64}, "u": "campo"}, {"id": "int-monitoraggio-e-ottimizzazione-delle-performance-29", "area": "MONITORAGGIO & OTTIMIZZAZIONE", "name": "Monitoraggio e Ottimizzazione delle Performance", "e": {"Basso": 24, "Medio": 48, "Alto": 80}}, {"id": "int-monitoraggio-kpi-di-campagne-su-scala-globale-30", "area": "MONITORAGGIO & OTTIMIZZAZIONE", "name": "Monitoraggio KPI di campagne su scala globale", "e": {"Basso": 24, "Medio": 56, "Alto": 96}}, {"id": "int-sicurezza-e-compliance-gdpr-ccpa-31", "area": "MONITORAGGIO & OTTIMIZZAZIONE", "name": "Sicurezza e Compliance (GDPR, CCPA)", "e": {"Basso": 16, "Medio": 40, "Alto": 64}}, {"id": "int-test-e-quality-assurance-qa-32", "area": "MONITORAGGIO & OTTIMIZZAZIONE", "name": "Test e Quality Assurance (QA)", "e": {"Basso": 16, "Medio": 40, "Alto": 64}}, {"id": "int-formazione-utenti-34", "area": "FORMAZIONE & MANUTENZIONE", "name": "Formazione Utenti", "e": {"Basso": 16, "Medio": 32, "Alto": 56}}, {"id": "int-evolutive-nuove-integrazioni-e-metriche-35", "area": "FORMAZIONE & MANUTENZIONE", "name": "Evolutive (Nuove integrazioni e metriche)", "e": {"Basso": 16, "Medio": 40, "Alto": 80}}, {"id": "int-maintenance-36", "area": "FORMAZIONE & MANUTENZIONE", "name": "Maintenance", "e": {"Basso": 16, "Medio": 32, "Alto": 64}, "recurring": true}, {"id": "int-gestione-e-manutenzione-pattern-37", "area": "FORMAZIONE & MANUTENZIONE", "name": "Gestione e Manutenzione Pattern", "e": {"Basso": 16, "Medio": 32, "Alto": 48}, "recurring": true}]};
 
 /* ======================= stato =========================== */
 var LEVELS = ["Basso","Medio","Alto"];
@@ -361,15 +362,18 @@ var MAX_NAME = 90;      /* caratteri massimi del nome di una voce */
 var MAX_CLIENT = 60;    /* caratteri massimi del nome cliente */
 var MAX_FILE = 2097152; /* dimensione massima del file di configurazione (2 MB) */
 var CURRENCIES = ["EUR","USD","GBP","CHF"];
-var SETTING_LIMITS = {rate:[0,9999], disc:[0,100], res:[1,20], hpw:[1,168]};
-var SETTING_LABELS = {rate:"Tariffa oraria", disc:"Sconto", res:"Risorse in parallelo", hpw:"Ore / settimana"};
+var SETTING_LIMITS = {rate:[0,9999], disc:[0,100]};
+var SETTING_LABELS = {rate:"Tariffa oraria", disc:"Sconto"};
+/* parametri senza campo nel pannello: valori fissi come nel foglio (margine e arrotondamento per ambito, 1 risorsa a 40 h/settimana) */
+function fixedSettings(){ return {margin:{mce:0, intelligence:25}, round:{mce:0.5, intelligence:8}, res:1, hpw:40}; }
+var ORDER_MSG = "Medio non può essere inferiore a Basso, né Alto a Medio: valori allineati.";
 
 var S = {
   tab:"mce", mode:"edit", client:"", q:"", onlySel:false, levers:false,
   /* come nel foglio originale: margine e arrotondamento esistono solo su Intelligence */
   /* round = passo di arrotondamento delle righe in ore: 0,5 mezz'ora (minimo), 1 ora, 8 giorno (Intelligence, come nel foglio) */
   margin:{mce:0, intelligence:25}, rate:0, disc:0, cur:"EUR", res:1, hpw:40,
-  round:{mce:0.5, intelligence:8}, showCost:true,
+  round:{mce:0.5, intelligence:8},
   sel:{}, custom:{mce:[],intelligence:[]}, closed:{}
 };
 
@@ -385,7 +389,6 @@ function cleanText(v, max){
   if(typeof v !== "string") return "";
   return v.replace(/[\u0000-\u001F\u007F]/g, " ").replace(/\s+/g, " ").trim().slice(0, max);
 }
-function snapStep(x){ x = Number(x); if(!isFinite(x)) return MIN_STEP; return x >= HPD ? HPD : (x >= 1 ? 1 : MIN_STEP); }
 
 /* ---------- avvisi (al posto di alert) ---------- */
 var toastTimer = null;
@@ -421,17 +424,26 @@ function st(id){
   if(!S.sel[id]) S.sel[id] = {on:false, cx:"Basso", units:1, m:null};
   return S.sel[id];
 }
-function effort(it,s){
-  if(s.e && s.e[s.cx]!=null) return Number(s.e[s.cx]);
-  return Number(it.e[s.cx]);
+/* effort di un livello: valore modificato a mano sulla riga, altrimenti quello del catalogo */
+function effLevel(it,s,l){
+  if(s.e && s.e[l]!=null) return Number(s.e[l]);
+  return Number(it.e[l]);
+}
+function effort(it,s){ return effLevel(it,s,s.cx); }
+/* regola: Medio non inferiore a Basso, Alto non inferiore a Medio. Modifica v in place, true se ha corretto qualcosa */
+function orderEffort(v){
+  var changed = false;
+  if(v.Medio < v.Basso){ v.Medio = v.Basso; changed = true; }
+  if(v.Alto < v.Medio){ v.Alto = v.Medio; changed = true; }
+  return changed;
 }
 /* attivita' a quantita' (ha senso chiedere "quante?") oppure una tantum (si fa una volta sola in piattaforma).
    Il default viene dal catalogo (campo u = unita' di misura); la singola riga puo' scavalcarlo con s.q */
 function isQty(it,s){ return s.q !== undefined ? !!s.q : !!it.u; }
 function qtyLabel(it){ return it.u || "unità"; }
 /* plurale per il testo mostrato al cliente ("3 domini"); le etichette invariabili non compaiono qui */
-var PLURALS = {"dominio":"domini","filtro":"filtri","DE sincronizzata":"DE sincronizzate","integrazione":"integrazioni","invio":"invii",
-  "notifica":"notifiche","messaggio":"messaggi","canale":"canali","sessione":"sessioni","dimensione":"dimensioni","campo":"campi"};
+var PLURALS = {"filtro":"filtri","DE sincronizzata":"DE sincronizzate","integrazione":"integrazioni","invio":"invii",
+  "notifica":"notifiche","messaggio":"messaggi","canale":"canali","dimensione":"dimensioni","campo":"campi"};
 function qtyTag(it,s){ var n = unitsOf(it,s), l = qtyLabel(it); return nd(n) + " " + (n===1 ? l : (PLURALS[l] || l)); }
 /* le attivita' una tantum valgono sempre 1 unita'; le altre sono limitate a MAX_UNITS */
 function unitsOf(it,s){ return isQty(it,s) ? Math.round(clamp(s.units, 1, MAX_UNITS, 1)) : 1; }
@@ -575,7 +587,7 @@ function rowHTML(it){
     var m = (s.m==null? S.margin[scopeOf(it)] : s.m);
     h += '<div class="edit-line">';
     LEVELS.forEach(function(l){
-      var v = (s.e && s.e[l]!=null)? s.e[l] : it.e[l];
+      var v = effLevel(it,s,l);
       h += '<label>'+l+' (ore) <input type="number" step="0.5" min="0" max="'+MAX_EFFORT+'" value="'+v+'" data-act="e" data-v="'+l+'"></label>';
     });
     h += '<label>margine % <input type="number" step="5" min="0" max="'+MAX_MARGIN+'" value="'+m+'" data-act="m"></label>';
@@ -606,6 +618,12 @@ function patchList(){
     var inp = row.querySelector('[data-act="units"]');
     if(inp && inp.value !== String(unitsOf(it,s))) inp.value = unitsOf(it,s);
     row.querySelector(".row-days").textContent = s.on ? nd(d)+" h" : "-";
+    /* campi di Modifica effort: si riallineano quando la regola Basso/Medio/Alto corregge altri livelli */
+    var ein = row.querySelectorAll('[data-act="e"]');
+    for(j=0;j<ein.length;j++){
+      var evv = String(effLevel(it,s,ein[j].getAttribute("data-v")));
+      if(ein[j].value !== evv) ein[j].value = evv;
+    }
   }
   var subs = list.querySelectorAll(".sub-label");
   for(i=0;i<subs.length;i++){
@@ -689,7 +707,7 @@ function renderSummary(){
   document.getElementById("p-hours").textContent = nd(t.hours);
   document.getElementById("p-gg").textContent = ggText(t.hours);
   document.getElementById("p-cost").textContent = money(net);
-  document.getElementById("p-cost-w").hidden = !(S.rate>0 && S.showCost);
+  document.getElementById("p-cost-w").hidden = !(S.rate>0);
   document.getElementById("p-weeks").textContent = wtxt;
   document.getElementById("brand-sub").textContent = scope;
 }
@@ -751,9 +769,16 @@ listEl.addEventListener("change", function(e){
   else if(act==="e"){
     var l = t.getAttribute("data-v"); if(LEVELS.indexOf(l) < 0) return;
     raw = t.value === "" ? NaN : Number(t.value);
-    s.e = s.e || {}; s.e[l] = r2(clamp(t.value, 0, MAX_EFFORT, 0));
-    t.value = s.e[l];
+    var cur = {};
+    LEVELS.forEach(function(x){ cur[x] = effLevel(it,s,x); });
+    cur[l] = r2(clamp(t.value, 0, MAX_EFFORT, 0));
+    var fixed = orderEffort(cur);
+    s.e = {};
+    LEVELS.forEach(function(x){ if(cur[x] !== Number(it.e[x])) s.e[x] = cur[x]; });
+    if(!Object.keys(s.e).length) delete s.e;
+    t.value = cur[l];
     if(raw > MAX_EFFORT) notify("Massimo " + MAX_EFFORT + " ore per unità.");
+    else if(fixed) notify(ORDER_MSG);
   }
   else if(act==="m"){
     raw = t.value === "" ? NaN : Number(t.value);
@@ -807,10 +832,6 @@ bind("tab-mce","click",function(){ S.tab="mce"; syncTabs(); render(); });
 function syncTabs(){
   document.getElementById("tab-intelligence").setAttribute("aria-selected", S.tab==="intelligence");
   document.getElementById("tab-mce").setAttribute("aria-selected", S.tab==="mce");
-  /* margine e arrotondamento sono per ambito: il pannello segue la tab attiva */
-  document.getElementById("f-margin").value = S.margin[S.tab];
-  document.getElementById("f-round").value = String(stepOf(S.tab));
-  document.getElementById("lbl-margin").textContent = "Margine (" + (S.tab==="mce" ? "Engagement" : "Intelligence") + ")";
 }
 
 bind("q","input",function(e){ S.q = cleanText(e.target.value, 60); renderList(); });
@@ -835,14 +856,11 @@ bind("btn-clear","click",function(){
   });
 });
 
-["rate","disc","res","hpw"].forEach(function(k){
+["rate","disc"].forEach(function(k){
   var lim = SETTING_LIMITS[k];
-  bindNumber("f-"+k, lim[0], lim[1], (k==="res" || k==="hpw"), SETTING_LABELS[k], function(v){ S[k] = v; renderSummary(); });
+  bindNumber("f-"+k, lim[0], lim[1], false, SETTING_LABELS[k], function(v){ S[k] = v; renderSummary(); });
 });
-bindNumber("f-margin", 0, MAX_MARGIN, false, "Margine", function(v){ S.margin[S.tab] = v; refresh(); });
 bind("f-cur","change",function(e){ if(CURRENCIES.indexOf(e.target.value) > -1) S.cur = e.target.value; renderSummary(); });
-bind("f-round","change",function(e){ S.round[S.tab] = snapStep(e.target.value); refresh(); });
-bind("f-showcost","change",function(e){ S.showCost = e.target.checked; renderSummary(); });
 
 bind("btn-mode","click",function(){
   S.mode = S.mode==="client" ? "edit" : "client";
@@ -852,6 +870,20 @@ bind("btn-mode","click",function(){
 });
 bind("btn-print","click",function(){ window.print(); });
 
+/* nei tre campi dell'aggiunta, ogni valore compilato non puo' stare sotto il precedente */
+function orderAdder(){
+  var fixed = false, prev = 0;
+  ["add-b","add-m","add-a"].forEach(function(id){
+    var el = document.getElementById(id); if(el.value === "") return;
+    var v = r2(clamp(el.value, 0, MAX_EFFORT, 0));
+    if(v < prev){ v = prev; fixed = true; }
+    el.value = v; prev = v;
+  });
+  return fixed;
+}
+["add-b","add-m","add-a"].forEach(function(id){
+  document.getElementById(id).addEventListener("change", function(){ if(orderAdder()) notify(ORDER_MSG); });
+});
 function newCustomId(){
   var id;
   do{ id = "custom-" + Date.now().toString(36) + Math.floor(Math.random()*46656).toString(36); }
@@ -869,6 +901,9 @@ bind("btn-add","click",function(){
   if(!b && !m && !a){ document.getElementById("add-b").focus(); notify("Indica almeno l'effort Basso (ore)."); return; }
   if(!m) m = r2(clamp(b*2, 0, MAX_EFFORT, 0));
   if(!a) a = r2(clamp(b*3, 0, MAX_EFFORT, 0));
+  var tri = {Basso:b, Medio:m, Alto:a};
+  if(orderEffort(tri)) notify(ORDER_MSG);
+  b = tri.Basso; m = tri.Medio; a = tri.Alto;
   var id = newCustomId();
   var it = {id:id, area:cleanText(document.getElementById("add-area").value, 60) || "ALTRO", name:n,
             e:{Basso:b,Medio:m,Alto:a}, custom:true};
@@ -883,7 +918,7 @@ bind("btn-add","click",function(){
 /* ======================= salva / apri / csv =========================== */
 function snapshot(){
   return {v:2, savedAt:new Date().toISOString(), client:S.client,
-    settings:{margin:S.margin,rate:S.rate,disc:S.disc,cur:S.cur,res:S.res,hpw:S.hpw,round:S.round,showCost:S.showCost},
+    settings:{rate:S.rate,disc:S.disc,cur:S.cur},
     sel:S.sel, custom:S.custom};
 }
 
@@ -898,29 +933,10 @@ function restore(d){
   N.client = cleanText(d.client, MAX_CLIENT);
   N.cur = CURRENCIES.indexOf(g.cur) > -1 ? g.cur : "EUR";
   N.disc = r2(clamp(g.disc, 0, 100, 0));
-  N.res = Math.round(clamp(g.res, 1, 20, 1));
-  N.showCost = (typeof g.showCost === "boolean") ? g.showCost : true;
   var rate = Number(g.rate); if(!isFinite(rate)) rate = 0;
   N.rate = r2(clamp(legacy ? Math.round(rate/HPD*100)/100 : rate, 0, 9999, 0));   /* tariffa giornaliera -> oraria */
-  var hpw = (g.hpw !== undefined) ? Number(g.hpw) : (g.dpw !== undefined ? Number(g.dpw)*HPD : 40);
-  N.hpw = Math.round(clamp(hpw, 1, 168, 40));
-  N.margin = {mce:S.margin.mce, intelligence:S.margin.intelligence};
-  N.round = {mce:S.round.mce, intelligence:S.round.intelligence};
-  /* il vecchio arrotondamento on/off diventa un passo in ore (on = giorno) */
-  var convRound = function(x){ return typeof x==="boolean" ? (x ? HPD : 0) : x; };
-  var take = function(k, v){
-    if(v===undefined || v===null) return;
-    if(typeof v==="object"){
-      ["mce","intelligence"].forEach(function(sc){
-        if(v[sc]===undefined) return;
-        N[k][sc] = (k==="margin") ? r2(clamp(v[sc], 0, MAX_MARGIN, 0)) : snapStep(convRound(v[sc]));
-      });
-    }else{
-      /* file con valore unico: valido solo per Intelligence, come nel foglio */
-      N[k].intelligence = (k==="margin") ? r2(clamp(v, 0, MAX_MARGIN, 0)) : snapStep(convRound(v));
-    }
-  };
-  take("margin", g.margin); take("round", g.round);
+  /* margine, arrotondamento, risorse e ore/settimana non hanno campi: si usano sempre i valori fissi */
+  N.fixed = fixedSettings();
 
   /* voci custom: massimo MAX_CUSTOM per ambito, id e testi ripuliti */
   var toH = function(x){ return legacy ? Math.round(Number(x)*HPD*10000)/10000 : Number(x); };
@@ -936,8 +952,9 @@ function restore(d){
       var id = (typeof c.id === "string" && /^custom-[a-z0-9]{1,24}$/i.test(c.id)) ? c.id : null;
       if(!name || !id || lookup[id]) return;
       var e = (c.e && typeof c.e === "object") ? c.e : {};
-      var it = {id:id, area:cleanText(c.area, 60) || "ALTRO", name:name, custom:true,
-                e:{Basso:r2(clamp(toH(e.Basso), 0, MAX_EFFORT, 0)), Medio:r2(clamp(toH(e.Medio), 0, MAX_EFFORT, 0)), Alto:r2(clamp(toH(e.Alto), 0, MAX_EFFORT, 0))}};
+      var tri = {Basso:r2(clamp(toH(e.Basso), 0, MAX_EFFORT, 0)), Medio:r2(clamp(toH(e.Medio), 0, MAX_EFFORT, 0)), Alto:r2(clamp(toH(e.Alto), 0, MAX_EFFORT, 0))};
+      orderEffort(tri);
+      var it = {id:id, area:cleanText(c.area, 60) || "ALTRO", name:name, custom:true, e:tri};
       if(c.u) it.u = cleanText(String(c.u), 20) || "unità";
       cust[sc].push(it); lookup[id] = it;
     });
@@ -952,10 +969,13 @@ function restore(d){
     var s = {on: r.on === true, cx: LEVELS.indexOf(r.cx) > -1 ? r.cx : "Basso", units: Math.round(clamp(r.units, 1, MAX_UNITS, 1)), m: null};
     if(r.m !== null && r.m !== undefined && isFinite(Number(r.m))) s.m = r2(clamp(r.m, 0, MAX_MARGIN, 0));
     if(r.e && typeof r.e === "object"){
-      var eo = {};
+      var eo = {}, tri2 = {};
       LEVELS.forEach(function(l){
-        if(r.e[l] !== null && r.e[l] !== undefined && isFinite(Number(r.e[l]))) eo[l] = r2(clamp(toH(r.e[l]), 0, MAX_EFFORT, 0));
+        tri2[l] = Number(it.e[l]);
+        if(r.e[l] !== null && r.e[l] !== undefined && isFinite(Number(r.e[l]))) tri2[l] = r2(clamp(toH(r.e[l]), 0, MAX_EFFORT, 0));
       });
+      orderEffort(tri2);
+      LEVELS.forEach(function(l){ if(tri2[l] !== Number(it.e[l])) eo[l] = tri2[l]; });
       if(Object.keys(eo).length) s.e = eo;
     }
     if(typeof r.q === "boolean" && r.q !== !!it.u) s.q = r.q;
@@ -963,21 +983,16 @@ function restore(d){
     sel[id] = s;
   });
 
-  S.client = N.client; S.cur = N.cur; S.disc = N.disc; S.res = N.res; S.hpw = N.hpw; S.rate = N.rate;
-  S.showCost = N.showCost; S.margin = N.margin; S.round = N.round;
+  S.client = N.client; S.cur = N.cur; S.disc = N.disc; S.rate = N.rate;
+  S.margin = N.fixed.margin; S.round = N.fixed.round; S.res = N.fixed.res; S.hpw = N.fixed.hpw;
   S.sel = sel; S.custom = cust;
   syncFields(); render();
 }
 function syncFields(){
   document.getElementById("f-client").value = S.client;
-  document.getElementById("f-margin").value = S.margin[S.tab];
   document.getElementById("f-rate").value = S.rate;
   document.getElementById("f-disc").value = S.disc;
   document.getElementById("f-cur").value = S.cur;
-  document.getElementById("f-res").value = S.res;
-  document.getElementById("f-hpw").value = S.hpw;
-  document.getElementById("f-round").value = String(stepOf(S.tab));
-  document.getElementById("f-showcost").checked = S.showCost;
 }
 function download(name, text, type){
   var b = new Blob([text], {type:type||"application/json;charset=utf-8"});
